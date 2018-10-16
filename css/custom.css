@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+.reveal li {
+  padding: 6px 0; }
+
+.reveal .intro {
+  line-height: 1.1; }
+
+.reveal .seq {
+  line-height: 2.4; }
+
+.reveal .thinner {
+  font-weight: 100; }
+
+.reveal .thin {
+  font-weight: 300; }
+
+.reveal .thick {
+  font-weight: 700; }
+
+.reveal .thicker {
+  font-weight: 900; }
+
+.reveal .small {
+  font-size: 0.8em; }
+
+.reveal .smaller {
+  font-size: 0.5em; }
+
+.reveal .crimson {
+  color: #DC143C; }
+
+.reveal .burgundy {
+  color: #900020; }
+
+.reveal .royal {
+  color: #111E6C; }
+
+.reveal .last-page * {
+  color: #eee;
+  text-shadow: 2px 2px 2px #444; }
