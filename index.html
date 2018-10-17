@@ -112,6 +112,8 @@
             <p>90K human-transcribed and de-identified medical encounters</p>
             <p>10 million turns</p>
             <p>Labeled: 566 encounters (~7K symptom occurrences)</p>
+            <p>73% of turns do not have a synptom</p>
+            <p>Pain (7.0%), cough (5.6%) and shortness-of-breath (5.5%)</p>
             <p>80/20 train/test split</p>
           </div>
         </section>
@@ -196,21 +198,21 @@
               </tr>
               <tr>
                 <td style="border: none;">Autoencoder (frozen)</td>
-                <td style="border: none;">87%</td>
-                <td style="border: none;">39%</td>
-                <td style="border: none;">66%</td>
+                <td style="border: none;">80%</td>
+                <td style="border: none;">35%</td>
+                <td style="border: none;">54%</td>
               </tr>
               <tr>
                 <td style="border: none;">Next-turn (frozen)</td>
                 <td style="border: none;">87%</td>
-                <td style="border: none;">39%</td>
-                <td style="border: none;">66%</td>
+                <td style="border: none;">46%</td>
+                <td style="border: none;">45%</td>
               </tr>
               <tr>
                 <td>Skip-turn (frozen)</td>
-                <td>87%</td>
-                <td>39%</td>
-                <td>66%</td>
+                <td>86%</td>
+                <td>45%</td>
+                <td>63%</td>
               </tr>
             </tbody>
           </table>
@@ -218,6 +220,7 @@
         </section>
         <section>
           <h3 class="thick">Result III</h3>
+          <p class="small">Analysis of the 1024dim 1-turn embeddings</p>
           <div class="container">
             <div class="col">
               <table class="smaller">
@@ -270,7 +273,8 @@
                   </tr>
                 </tbody>
               </table>
-              <p class="smaller">Similarity score assigned by humans to turns' neighbors in the "turn embedding" space</p>
+              <p class="smaller">Similarity score assigned by experts to 5 turns' neighbors in the "turn embedding" space</p>
+              <p class="thin smaller">i.e. whether they are substitute-able in a doctor-patient conversation</p>
             </div>
           </div>
         </section>
@@ -339,13 +343,13 @@
             </div>
           </div>
           <div class="small">
-            Alternate between batches from x and z
+            Alternated between batches from x and z
           </div>
         </section>
         <section>
           <h3 class="thick">Special Method</h3>
           <ul class="small">
-            <li>Pyramidal encoder: down-sample the frame encodings</li>
+            <li>Pyramidal encoder: down-sampled the frame encodings</li>
             <li>Location-aware attention*</li>
             <li>RNNLM trained on the same sentences used for augmentation</li>
           </ul>
@@ -392,12 +396,12 @@
               </tr>
               <tr>
                 <td style="vertical-align: middle;">Phonestream</td>
-                <td>CMUDICT --> Train G2P (Phonetisaurus)</td>
+                <td>CMUDICT --> Train G2P (Phonetisaurus) <br /> <span class="thin">wikt2pron</span> (for Spanish and Italian)</td>
               </tr>
               <tr>
                 <td style="vertical-align: middle;">Rep-Phonestream</td>
-                <td>Assume the duration as normal distribution, <br /> estimate it from frame-level phoneme in TIMIT,
-                  <br /> and then sample a duration from it <br /> (divided by 4 for down-sampling)</td>
+                <td>Assumed the duration as normal distribution, <br /> estimated it from frame-level phoneme in TIMIT,
+                  <br /> and then sampled a duration from it <br /> (divided by 4 for down-sampling)</td>
               </tr>
             </tbody>
           </table>
@@ -673,7 +677,7 @@
                 <td style="border: none;">/</td>
               </tr>
               <tr>
-                <td style="border: none;">Williamson <i>et al.</i></td>
+                <td style="border: none;">*Williamson <i>et al.</i></td>
                 <td style="border: none;">(Text)</td>
                 <td style="border: none;">.84</td>
                 <td style="border: none;">/</td>
