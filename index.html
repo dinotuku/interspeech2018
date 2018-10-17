@@ -95,7 +95,7 @@
         </section>
         <section>
           <h3 class="thick">Unsupervised Pre-training</h3>
-          <img width="640" data-src="https://i.imgur.com/jPcEyrT.png" />
+          <img style="border: none; box-shadow: none;" width="640" data-src="https://i.imgur.com/jPcEyrT.png" />
           <p>RNN Encoder-Decoder</p>
           <p><span class="crimson fragment">3-turn context window</span> was used in the experiments</p>
         </section>
@@ -103,7 +103,7 @@
           <h3 class="thick">Supervised Classification</h3>
           <p>RNN Encoder-<span class="fragment highlight-red">Decoder</span></p>
           <p>Encoder was intialized with the pre-training one</p>
-          <img width="540" data-src="https://i.imgur.com/2wWTn4E.png" />
+          <img style="border: none; box-shadow: none;" width="540" data-src="https://i.imgur.com/2wWTn4E.png" />
         </section>
         <section>
           <h3 class="thick">Corpus</h3>
@@ -219,7 +219,28 @@
           <h3 class="thick">Result III</h3>
           <div class="container">
             <div class="col">
-              <img data-src="https://i.imgur.com/WQnaqDH.png" />
+              <table class="smaller">
+                <thead>
+                  <tr>
+                    <th>Turn</th>
+                    <th>Nearest neighbor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Yeah but the only problem <br /> is that I have no urinate <br /> sometimes every two hours.</td>
+                    <td>Like every two hours <br /> to go to the bathroom</td>
+                  </tr>
+                  <tr>
+                    <td>Yeah. and I lost another <br /> 2 pounds, and she was happy <br /> with that.</td>
+                    <td>I had lost all <br /> that weight. I was <br /> so proud of myself.</td>
+                  </tr>
+                  <tr>
+                    <td>Yeah, my stomach didn't <br /> like it, and then you put me <br /> on fosamax and that didn't -</td>
+                    <Td>With the actonel <br /> because it made <br /> me sick</Td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="col">
               <table class="smaller">
@@ -285,17 +306,17 @@
             <tbody>
               <tr>
                 <td style="vertical-align: middle;">Charstream</td>
-                <td class="fragment thin smaller seq">J O H N B L A R E A N D C O M P A N Y</td>
+                <td class="thin smaller seq"><span class="fragment">J O H N B L A R E A N D C O M P A N Y</span></td>
               </tr>
               <tr>
                 <td style="vertical-align: middle;">Phonestream</td>
-                <td class="fragment thin smaller seq">JH AA1 N B L EH1 R AE1 N D K <br /> AH1 M P AH0 N IY0</td>
+                <td class="thin smaller seq"><span class="fragment">JH AA1 N B L EH1 R AE1 N D K <br /> AH1 M P AH0 N
+                    IY0</span></td>
               </tr>
               <tr>
                 <td style="vertical-align: middle;">Rep-Phonestream</td>
-                <td class="fragment thin smaller seq">JH JH AA1 AA1 AA1 AA1 N <br /> B L L L EH1 R AE1 AE1 AE1 N D K K
-                  K AH1 <br />
-                  AH1 M M P AH0 AH0 AH0 N IY0 IY0 IY0</td>
+                <td class="thin smaller seq"><span class="fragment">JH JH AA1 AA1 AA1 AA1 N <br /> B L L L EH1 R AE1
+                    AE1 AE1 N D K K K AH1 <br /> AH1 M M P AH0 AH0 AH0 N IY0 IY0 IY0</span></td>
               </tr>
             </tbody>
           </table>
@@ -306,12 +327,12 @@
           <p>Attention-Based RNN Encoder-Decoder network</p>
           <div class="container">
             <div class="col">
-              <img data-src="https://i.imgur.com/Mb3wHRG.png" />
+              <img style="border: none; box-shadow: none;" data-src="https://i.imgur.com/Mb3wHRG.png" />
               <p class="small">x: acoustic features (83dim)</p>
               <p class="small">80 MFCC + 3 pitch features</p>
             </div>
             <div class="col">
-              <img data-src="https://i.imgur.com/e0eoasy.png" />
+              <img style="border: none; box-shadow: none;" data-src="https://i.imgur.com/e0eoasy.png" />
               <p class="small">z: synthetic input (83dim)</p>
               <p class="small">Embedding layer is omitted</p>
             </div>
@@ -356,24 +377,135 @@
         </section>
         <section>
           <h3 class="thick">Generate Synthetic Input</h3>
-          <ul class="small">
-            <li><i>Charstream</i>: omit word boundaries</li>
-            <li><i>Phonestream</i>: CMUDICT --> Train G2P (Phonetisaurus)</li>
-            <li><i>Rep-Phonestream</i>: Assume the duration as normal distribution, estimate it from frame-level
-              phoneme in TIMIT, and then sample a duration from it (divided by 4 for down-sampling)</li>
-          </ul>
+          <table style="font-size: 0.65em; line-height: 2;">
+            <thead>
+              <tr>
+                <th>Synthetic Input</th>
+                <th>Method</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle;">Charstream</td>
+                <td>Omit word boundaries</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle;">Phonestream</td>
+                <td>CMUDICT --> Train G2P (Phonetisaurus)</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle;">Rep-Phonestream</td>
+                <td>Assume the duration as normal distribution, <br /> estimate it from frame-level phoneme in TIMIT,
+                  <br /> and then sample a duration from it <br /> (divided by 4 for down-sampling)</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
         <section>
           <h2 class="thick">Results</h2>
         </section>
         <section>
           <h3 class="thick">Result I</h3>
-          <img width="640" data-src="https://i.imgur.com/U6MrVnQ.png" />
-          <p class="small">Experiments using different augmentation input types</p>
+          <table class="smaller">
+            <thead>
+              <tr>
+                <th>Corpus</th>
+                <th>Augmentation</th>
+                <th>CER <br /> (eval, dev)</th>
+                <th>WER <br /> (eval, dev)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan=6 style="vertical-align: middle;">English <br />(WSJ)</td>
+                <td style="border: none;">No-Augmentation</td>
+                <td style="border: none;"><b>7.0</b>, 9.9</td>
+                <td style="border: none;">19.5, 24.8</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Charstream</td>
+                <td style="border: none;">7.5, 10.5</td>
+                <td style="border: none;">20.3, 25.7</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Phonestream</td>
+                <td style="border: none;">7.4, 10.1</td>
+                <td style="border: none;">20.4, 25.3</td>
+              </tr>
+              <tr>
+                <td>Rep-Phonestream</td>
+                <td>7.1, <b>9.8</b></td>
+                <td><b>17.5</b>, <b>22.7</b></td>
+              </tr>
+              <tr>
+                <td style="border: none;">No-Augmentation + LM</td>
+                <td style="border: none;">7.0, 9.8</td>
+                <td style="border: none;">17.2, 22.2</td>
+              </tr>
+              <tr>
+                <td>Rep-Phonestream + LM</td>
+                <td><b>6.7, 9.4</b></td>
+                <td><b>16.0, 20.8</b></td>
+              </tr>
+              <tr>
+                <td rowspan=2 style="vertical-align: middle;">Italian <br /> (Voxforge)</td>
+                <td style="border: none;">No-Augmentation + LM</td>
+                <td style="border: none;">16.4, 15.9</td>
+                <td style="border: none;">47.2, 46.1</td>
+              </tr>
+              <tr>
+                <td>Rep-Phonestream + LM</td>
+                <td><b>14.8, 14.5</b></td>
+                <td><b>44.3, 44.0</b></td>
+              </tr>
+              <tr>
+                <td rowspan=2 style="vertical-align: middle; border: none;">Spaniosh <br /> (HUB4)</td>
+                <td style="border: none;">No-Augmentation + LM</td>
+                <td style="border: none;">12.6, <b>12.8</b></td>
+                <td style="border: none;">31.5, 33.5</td>
+              </tr>
+              <tr>
+                <td>Rep-Phonestream + LM</td>
+                <td><b>12.1</b>, 13.1</td>
+                <td><b>29.5, 32.6</b></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="smaller">Experiments using different augmentation input types</p>
         </section>
         <section>
           <h3 class="thick">Result II</h3>
-          <img width="640" data-src="https://i.imgur.com/bOt70C0.png" />
+          <table class="small">
+            <thead>
+              <tr>
+                <th>Augmentation</th>
+                <th>Nonsense <br /> errors %</th>
+                <th>Legal <br /> errors %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border: none;">No-Augmentation</td>
+                <td style="border: none;">32.93</td>
+                <td style="border: none;">67.07</td>
+              </tr>
+              <tr>
+                <td style="border: none;">No-Augmentation + LM</td>
+                <td style="border: none;">24.34</td>
+                <td style="border: none;">75.66</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Rep-Phonestream</td>
+                <td style="border: none;">24.99</td>
+                <td style="border: none;">75.11</td>
+              </tr>
+              <tr>
+                <td>Rep-Phonestream + LM</td>
+                <td>20.25</td>
+                <td>79.75</td>
+              </tr>
+            </tbody>
+          </table>
           <p class="small">Error type differences between different methods</p>
           <div class="thin small">
             <p>Nonsense: CASINO --> ACCINO</p>
@@ -458,11 +590,19 @@
         </section>
         <section>
           <h3 class="thick">Experiment 3: Sequence Modeling</h3>
-          <img height="360" data-src="https://i.imgur.com/zvPdfSO.png" />
-          <div class="small">
-            Text-based - Audio-based - Multi-modal <br/>
-            Text: 7 timesteps, stride 3 <br/>
-            Audio: 20/30 timesteps, stride 1
+          <div class="container">
+            <div class="col">
+              <img style="border: none; box-shadow: none;" height="360" data-src="https://i.imgur.com/zvPdfSO.png" />
+            </div>
+            <div class="col">
+              <div class="small">
+                <p>Text-based</p>
+                <p>Audio-based</p>
+                <p>Multi-modal</p>
+                <p>Text: 7 timesteps, stride 3</p>
+                <p>Audio: 20/30 timesteps, stride 1</p>
+              </div>
+            </div>
           </div>
         </section>
         <section>
@@ -470,8 +610,155 @@
         </section>
         <section>
           <h3 class="thick">Result</h3>
-          <img width="640" data-src="https://i.imgur.com/EvpYKPR.png" />
-          <p class="smaller">Fusion scoring: The top N (in our case N=3) most predicted depression class(es) among all the segments of a subject were selected as the subject's predicted outcome</p>
+          <table style="font-size: 0.35em;">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Features</th>
+                <th>F1</th>
+                <th>Prec.</th>
+                <th>Rec.</th>
+                <th>MAE</th>
+                <th>RMSE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="border: none;">Baseline Approaches</th>
+              </tr>
+              <tr>
+                <td style="border: none;">Baseline</td>
+                <td style="border: none;">(Ensemble)</td>
+                <td style="border: none;">.50</td>
+                <td style="border: none;">.60</td>
+                <td style="border: none;">.43</td>
+                <td style="border: none;">6.62</td>
+                <td style="border: none;">5.52</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Williamson <i>et al.</i></td>
+                <td style="border: none;">(Audio)</td>
+                <td style="border: none;">.50</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">5.36</td>
+                <td style="border: none;">6.74</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Ma <i>et al.</i></td>
+                <td style="border: none;">(Audio)</td>
+                <td style="border: none;">.52</td>
+                <td style="border: none;">.35</td>
+                <td style="border: none;">1.00</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Gong <i>et al.</i></td>
+                <td style="border: none;">(Emsemble)</td>
+                <td style="border: none;">.70</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">2.77</td>
+                <td style="border: none;">3.54</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Williamson <i>et al.</i></td>
+                <td style="border: none;">(Text)</td>
+                <td style="border: none;">.76</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Williamson <i>et al.</i></td>
+                <td style="border: none;">(Text)</td>
+                <td style="border: none;">.84</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">/</td>
+                <td style="border: none;">3.34</td>
+                <td style="border: none;">4.46</td>
+              </tr>
+              <tr>
+                <th style="border: none;">Our Approach</th>
+              </tr>
+              <tr>
+                <td style="border: none;">Context-free</td>
+                <td style="border: none;">(Audio)</td>
+                <td style="border: none;">.50</td>
+                <td style="border: none;">.71</td>
+                <td style="border: none;">.38</td>
+                <td style="border: none;">5.31</td>
+                <td style="border: none;">6.94</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Context-free</td>
+                <td style="border: none;">(Text)</td>
+                <td style="border: none;">.59</td>
+                <td style="border: none;">.71</td>
+                <td style="border: none;">.50</td>
+                <td style="border: none;">7.02</td>
+                <td style="border: none;">9.43</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Weighted</td>
+                <td style="border: none;">(Audio)</td>
+                <td style="border: none;">.67</td>
+                <td style="border: none;"><b>1.00</b></td>
+                <td style="border: none;">.50</td>
+                <td style="border: none;">7.60</td>
+                <td style="border: none;">10.03</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Weighted</td>
+                <td style="border: none;">(Text)</td>
+                <td style="border: none;">.44</td>
+                <td style="border: none;"><b>1.00</b></td>
+                <td style="border: none;">.29</td>
+                <td style="border: none;">7.32</td>
+                <td style="border: none;">8.85</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Sequence</td>
+                <td style="border: none;">(Audio)</td>
+                <td style="border: none;">.63</td>
+                <td style="border: none;">.71</td>
+                <td style="border: none;">.56</td>
+                <td style="border: none;">5.13</td>
+                <td style="border: none;">6.50</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Sequence</td>
+                <td style="border: none;">(Text)</td>
+                <td style="border: none;">.67</td>
+                <td style="border: none;">.57</td>
+                <td style="border: none;">.80</td>
+                <td style="border: none;">5.18</td>
+                <td style="border: none;">6.38</td>
+              </tr>
+              <tr>
+                <td style="border: none;">Multi-modal</td>
+                <td style="border: none;">(Audio+Text)</td>
+                <td style="border: none;"><b>.77</b></td>
+                <td style="border: none;">.71</td>
+                <td style="border: none;"><b>.83</b></td>
+                <td style="border: none;">5.10</td>
+                <td style="border: none;">6.37</td>
+              </tr>
+              <tr>
+                <td style="border: none;">*Multi-Modal</td>
+                <td style="border: none;">(Audio+Text)</td>
+                <td style="border: none;">.43</td>
+                <td style="border: none;">.43</td>
+                <td style="border: none;">.43</td>
+                <td style="border: none;"><b>4.97</b></td>
+                <td style="border: none;"><b>6.27</b></td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.35em;">*Fusion scoring: The top 3 most predicted depression class(es) among all
+            the segments of a subject were selected as the predicted outcome</p>
         </section>
         <section>
           <h3 class="thick">Conclusions</h3>
